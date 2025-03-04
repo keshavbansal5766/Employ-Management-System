@@ -6,9 +6,9 @@ import Header from "./components/other/Header";
 function App() {
   return (
     <>
-      {/* <Login /> */}
+      <Login />
       {/* <AdminDashboard /> */}
-      <EmployeeDashboard />
+      {/* <EmployeeDashboard /> */}
     </>
   );
 }

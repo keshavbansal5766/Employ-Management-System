@@ -8,11 +8,12 @@
   display: none;
 }
 
-body{
+body {
   background-color: #111;
+  color: #fff;
 }
 
-#tasklist::-webkit-scrollbar-thumb{
+#tasklist::-webkit-scrollbar-thumb {
   background-color: rgb(143, 143, 143);
   border-radius: 50px;
 }

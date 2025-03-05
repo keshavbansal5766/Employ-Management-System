@@ -10,12 +10,14 @@ function App() {
   const userData = useContext(AuthContext);
 
   useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
     if (loggedInUser) {
-      setUser(loggedInUser.role);
-      setLoggedInUserData(loggedInUser.data);
+      const userData = JSON.parse(loggedInUser);
+      setUser(userData.role);
+      setLoggedInUserData(userData.data);
     }
-  }, [userData]);
+  }, []);
 
   const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
@@ -42,9 +44,9 @@ function App() {
     <>
       {!user ? <Login handleLogin={handleLogin} /> : ""}
       {user === "admin" ? (
-        <AdminDashboard />
+        <AdminDashboard changeUser={setUser} />
       ) : user === "employee" ? (
-        <EmployeeDashboard data={loggedInUserData} />
+        <EmployeeDashboard  changeUser={setUser} data={loggedInUserData} />
       ) : (
         ""
       )}

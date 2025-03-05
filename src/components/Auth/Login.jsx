@@ -20,19 +20,20 @@ const Login = ({ handleLogin }) => {
           className="flex flex-col items-center justify-center gap-4"
         >
           <Input
+            className="border-2 font-medium outline-none bg-transparent border-emerald-600 text-lg py-2 px-6 rounded-full placeholder:text-gray-400"
             isRequired={true}
             type="email"
             placeholder="Enter your email"
             name="email"
           />
           <Input
+            className="border-2 font-medium outline-none bg-transparent border-emerald-600 text-lg py-2 px-6 rounded-full placeholder:text-gray-400"
             isRequired={true}
             type="password"
             placeholder="Enter your password"
             name="password"
           />
           <button
-         
             disabled={pending}
             className="text-white  border-none outline-none hover:bg-emerald-700 font-semibold bg-emerald-600 text-lg py-2 px-8 w-full rounded-full placeholder:text-white"
           >

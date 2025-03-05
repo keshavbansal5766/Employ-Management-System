@@ -25,11 +25,6 @@ function CreateTask() {
       newTask: true,
     };
 
-    // const data = userData;
-    // console.log(obj);
-
-   
-
     setUserData((prev) =>
       prev.map((element) =>
         element.firstName === assignTo
@@ -64,7 +59,7 @@ function CreateTask() {
               type="text"
               placeholder="Make a UI design"
               name=" taskTitle"
-              // isRequired={true}
+              isRequired={true}
             />
           </div>
           <div>
@@ -73,7 +68,7 @@ function CreateTask() {
               className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
               type="date"
               name="taskDate"
-              // isRequired={true}
+              isRequired={true}
             />
           </div>
           <div>
@@ -83,7 +78,7 @@ function CreateTask() {
               type="text"
               placeholder="employee name"
               name="assignTo"
-              // isRequired={true}
+              isRequired={true}
             />
           </div>
           <div>
@@ -93,7 +88,7 @@ function CreateTask() {
               type="text"
               placeholder="design, dev, etc"
               name="category"
-              // isRequired={true}
+              isRequired={true}
             />
           </div>
         </div>
@@ -103,7 +98,7 @@ function CreateTask() {
             className="w-full h-44 text-sm py-2 px-4 rounded outline-none bg-transparent border-[1px] border-gray-400"
             name="taskDescription"
             id=""
-            // required
+            required
           ></textarea>
           <button
             disabled={pending}

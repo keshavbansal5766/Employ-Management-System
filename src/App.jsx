@@ -7,7 +7,7 @@ import { AuthContext } from "./context/AuthProvider";
 function App() {
   const [user, setUser] = useState(null);
   const [loggedInUserData, setLoggedInUserData] = useState(null);
-  const userData = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("loggedInUser");
@@ -17,14 +17,14 @@ function App() {
       setUser(userData.role);
       setLoggedInUserData(userData.data);
     }
-  }, []);
+  }, [userData]);
 
   const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
       setUser("admin");
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
     } else if (userData) {
-      const employee = userData?.employees.find(
+      const employee = userData.find(
         (employee) => employee.email === email && employee.password === password
       );
       if (employee) {
@@ -46,7 +46,7 @@ function App() {
       {user === "admin" ? (
         <AdminDashboard changeUser={setUser} />
       ) : user === "employee" ? (
-        <EmployeeDashboard  changeUser={setUser} data={loggedInUserData} />
+        <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
       ) : (
         ""
       )}

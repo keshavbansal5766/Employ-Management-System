@@ -5,6 +5,7 @@ import FailedTask from "./FailedTask";
 import NewTask from "./NewTask";
 
 function TaskList({ data }) {
+  console.log(data);
   const id = useId();
   return (
     <div

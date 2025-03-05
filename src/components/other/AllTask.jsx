@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 function AllTask() {
-  const userData = useContext(AuthContext);
-
+  const [userData, setUserData] = useContext(AuthContext);
   return (
     <div className="bg-[#1c1c1c] p-5 rounded mt-5">
       <div className="bg-red-400 mb-2 py-2 px-4 flex justify-between rounded">
@@ -14,7 +13,7 @@ function AllTask() {
         <h5 className="text-lg font-medium w-1/5">Failed</h5>
       </div>
       <div className="">
-        {userData.employees.map((employee) => {
+        {userData.map((employee) => {
           return (
             <div
               key={Math.random()}

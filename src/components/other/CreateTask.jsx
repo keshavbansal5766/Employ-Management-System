@@ -1,34 +1,51 @@
-import React, { useActionState } from "react";
+import React, { useActionState, useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 import Input from "../Input";
 
 function CreateTask() {
+  const [userData, setUserData] = useContext(AuthContext);
+
   const handleSubmit = async (previousData, formData) => {
     console.log("New task is creating...");
+
     await new Promise((res) => setTimeout(res, 3000));
-    let title = formData.get("title");
-    let date = formData.get("date");
+    let taskTitle = formData.get(" taskTitle");
+    let taskDate = formData.get("taskDate");
     let assignTo = formData.get("assignTo");
     let category = formData.get("category");
-    let description = formData.get("description");
+    let taskDescription = formData.get("taskDescription");
     let obj = {
-      title,
-      date,
-      assignTo,
+      taskTitle,
+      taskDate,
       category,
-      description,
+      taskDescription,
       active: false,
       completed: false,
       failed: false,
       newTask: true,
     };
 
-    const employeeData = JSON.parse(localStorage.getItem("employees"));
-    employeeData.forEach((element) => {
-      if (element.firstName === assignTo) {
-        element.tasks.push(obj);
-      }
-    });
-    console.log(employeeData);
+    // const data = userData;
+    // console.log(obj);
+
+   
+
+    setUserData((prev) =>
+      prev.map((element) =>
+        element.firstName === assignTo
+          ? {
+              ...element,
+              tasks: [...element.tasks, obj],
+              taskCounts: {
+                ...element.taskCounts,
+                newTask: (element.taskCounts.newTask =
+                  element.taskCounts.newTask + 1),
+              },
+            }
+          : element
+      )
+    );
+    console.log(userData);
   };
 
   const [data, action, pending] = useActionState(handleSubmit, undefined);
@@ -46,7 +63,7 @@ function CreateTask() {
               className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
               type="text"
               placeholder="Make a UI design"
-              name="title"
+              name=" taskTitle"
               // isRequired={true}
             />
           </div>
@@ -55,7 +72,7 @@ function CreateTask() {
             <Input
               className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
               type="date"
-              name="date"
+              name="taskDate"
               // isRequired={true}
             />
           </div>
@@ -84,7 +101,7 @@ function CreateTask() {
           <h3 className="text-sm text-gray-300 mb-0.5">Description</h3>
           <textarea
             className="w-full h-44 text-sm py-2 px-4 rounded outline-none bg-transparent border-[1px] border-gray-400"
-            name="description"
+            name="taskDescription"
             id=""
             // required
           ></textarea>

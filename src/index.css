@@ -17,3 +17,16 @@ body {
   background-color: rgb(143, 143, 143);
   border-radius: 50px;
 }
+
+#select {
+  color: #fff;
+  padding: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+#select option {
+  background-color: #140b0beb;
+  color: #fff;
+}
+

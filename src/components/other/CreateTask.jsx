@@ -40,7 +40,6 @@ function CreateTask() {
           : element
       )
     );
-    console.log(userData);
   };
 
   const [data, action, pending] = useActionState(handleSubmit, undefined);
@@ -73,13 +72,18 @@ function CreateTask() {
           </div>
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5">Asign to</h3>
-            <Input
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
-              type="text"
-              placeholder="employee name"
+            <select
+              id="select"
               name="assignTo"
-              isRequired={true}
-            />
+              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
+            >
+              <option value="">Select Employee</option>
+              {userData.map((data) => (
+                <option key={Math.random()} value={data.firstName}>
+                  {data.firstName}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5">Category</h3>

@@ -8,19 +8,15 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     let employees = localStorage.getItem("employees");
-    if (employees) {
-      if (userData) {
-        localStorage.setItem("employees", JSON.stringify(userData));
-      } else {
-        let data = JSON.parse(employees);
-        setUserData(data);
-      }
-    } else {
+    if (!employees) {
       setLocalStorage();
       let data = JSON.parse(localStorage.getItem("employees"));
       setUserData(data);
+    } else {
+      if (userData) {
+        localStorage.setItem("employees", JSON.stringify(userData));
+      }
     }
-
   }, [userData]);
 
   return (

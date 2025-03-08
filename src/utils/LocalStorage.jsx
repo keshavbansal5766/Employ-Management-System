@@ -1,4 +1,4 @@
-const employees = [
+export const employees = [
   {
     id: 1,
     firstName: "Arjun",
@@ -201,7 +201,7 @@ const employees = [
   },
 ];
 
-const admin = [
+export const admin = [
   {
     id: 1,
     email: "admin@me.com",

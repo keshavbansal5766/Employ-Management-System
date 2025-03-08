@@ -1,7 +1,7 @@
 import React from "react";
 
 function TaskOverview({ data }) {
-  console.log(data);
+  // console.log(data);
   return (
     <div
       id="taskoverview"

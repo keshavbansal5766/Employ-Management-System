@@ -1,10 +1,10 @@
-import React, { useActionState, useContext } from "react";
+import React, { use, useActionState, useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import Input from "../Input";
 
 function CreateTask() {
   const [userData, setUserData] = useContext(AuthContext);
-
+  console.log(userData);
   const handleSubmit = async (previousData, formData) => {
     console.log("New task is creating...");
 

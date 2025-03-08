@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
-function AcceptTask({ data }) {
+function AcceptTask({ data, dataUser }) {
+  const [userData, setUserData] = useContext(AuthContext);
+
+  const handleComplete = () => {
+    // setUserData((prev) => {
+    //   return prev.map((user) => {
+    //     return user.firstName === dataUser.firstName
+    //       ? {
+    //           ...user,
+    //           tasks: user.tasks.map((task) =>
+    //             task.taskTitle === data.taskTitle
+    //               ? { ...task, completed: true, active: false }
+    //               : task
+    //           ),
+    //           taskCounts: {
+    //             ...user.taskCounts,
+    //             completed: (user.taskCounts.completed =
+    //               user.taskCounts.completed + 1),
+    //             active: (user.taskCounts.active = user.taskCounts.active - 1),
+    //           },
+    //         }
+    //       : user;
+    //   });
+    // });
+    // console.log(userData);
+  };
+
   return (
     <div className=" flex-shrink-0  h-full w-[300px] p-5 bg-yellow-400 rounded-xl">
       <div className="flex justify-between items-center">
@@ -10,10 +37,16 @@ function AcceptTask({ data }) {
       <h2 className="mt-5 text-2xl font-semibold">{data.taskTitle}</h2>
       <p className="text-sm mt-2">{data.taskDescription}</p>
       <div className="flex justify-between mt-6 ">
-        <button className="bg-green-500 rounded font-medium py-1 px-2 text-xs">
+        <button
+          onClick={handleComplete}
+          className="bg-green-500 rounded font-medium py-1 px-2 text-xs"
+        >
           Mark as Completed
         </button>
-        <button className="bg-red-500 rounded font-medium py-1 px-2 text-xs">
+        <button
+          // onClick={handleFailed}
+          className="bg-red-500 rounded font-medium py-1 px-2 text-xs"
+        >
           Mark as Failed
         </button>
       </div>

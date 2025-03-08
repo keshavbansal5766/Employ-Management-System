@@ -5,8 +5,13 @@ import FailedTask from "./FailedTask";
 import NewTask from "./NewTask";
 
 function TaskList({ data }) {
-  console.log(data);
   const id = useId();
+  // console.log(data);
+
+  // const handleFailed = () => {
+  //   console.log("mark as failed");
+  // };
+
   return (
     <div
       id="tasklist"
@@ -14,7 +19,9 @@ function TaskList({ data }) {
     >
       {data.tasks.map((task) => {
         if (task.active) {
-          return <AcceptTask key={id + Math.random()} data={task} />;
+          return (
+            <AcceptTask key={id + Math.random()} dataUser={data} data={task} />
+          );
         }
         if (task.newTask) {
           return <NewTask key={id + Math.random()} data={task} />;

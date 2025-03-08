@@ -7,17 +7,20 @@ function AuthProvider({ children }) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const { employees } = getLocalStorage();
+    let employees = localStorage.getItem("employees");
     if (employees) {
       if (userData) {
         localStorage.setItem("employees", JSON.stringify(userData));
       } else {
-        setUserData(employees);
+        let data = JSON.parse(employees);
+        setUserData(data);
       }
     } else {
       setLocalStorage();
-      // setUserData(employees)
+      let data = JSON.parse(localStorage.getItem("employees"));
+      setUserData(data);
     }
+
   }, [userData]);
 
   return (

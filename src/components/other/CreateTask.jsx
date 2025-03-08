@@ -4,7 +4,6 @@ import Input from "../Input";
 
 function CreateTask() {
   const [userData, setUserData] = useContext(AuthContext);
-  console.log(userData);
   const handleSubmit = async (previousData, formData) => {
     console.log("New task is creating...");
 

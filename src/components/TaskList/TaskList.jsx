@@ -17,7 +17,7 @@ function TaskList({ data }) {
       id="tasklist"
       className="mt-10 flex overflow-x-auto items-center justify-start flex-nowrap gap-10 h-[55%] py-5 w-full"
     >
-      {data.tasks.map((task) => {
+      {data?.tasks.map((task) => {
         if (task.active) {
           return (
             <AcceptTask key={id + Math.random()} dataUser={data} data={task} />

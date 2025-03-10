@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 function NewTask({ data, dataUser }) {
   // console.log(dataUser);
   const [userData, setUserData] = useContext(AuthContext);
+  const [newTaskAccept, setNewTaskAccept] = useState(false);
   const handleNewTask = () => {
+    setNewTaskAccept(true);
     setUserData((prev) => {
       return prev.map((user) => {
         return user.firstName === dataUser.firstName
@@ -18,12 +20,12 @@ function NewTask({ data, dataUser }) {
               taskCounts: {
                 ...user.taskCounts,
                 active: user.taskCounts.active + 1,
+                newTask: user.taskCounts.newTask - 1,
               },
             }
           : user;
       });
     });
-    // console.log(userData);
   };
 
   return (

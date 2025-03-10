@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 function AcceptTask({ data, dataUser }) {
   const [userData, setUserData] = useContext(AuthContext);
@@ -18,7 +18,6 @@ function AcceptTask({ data, dataUser }) {
                 ...user.taskCounts,
                 completed: user.taskCounts.completed + 1,
                 active: user.taskCounts.active - 1,
-                newTask: user.taskCounts.newTask - 1,
               },
             }
           : user;

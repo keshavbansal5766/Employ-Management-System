@@ -6,14 +6,14 @@ export const employees = [
     password: "123",
     taskCounts: {
       active: 2,
-      newTask: 1,
+      newTask: 0,
       completed: 1,
       failed: 0,
     },
     tasks: [
       {
         active: true,
-        newTask: true,
+        newTask: false,
         completed: false,
         failed: false,
         taskTitle: "Update website",

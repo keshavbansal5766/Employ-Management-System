@@ -72,6 +72,7 @@ function CreateTask() {
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5">Asign to</h3>
             <select
+              required
               id="select"
               name="assignTo"
               className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"

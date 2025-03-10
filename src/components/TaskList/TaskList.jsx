@@ -8,10 +8,6 @@ function TaskList({ data }) {
   const id = useId();
   // console.log(data);
 
-  // const handleFailed = () => {
-  //   console.log("mark as failed");
-  // };
-
   return (
     <div
       id="tasklist"
@@ -29,10 +25,12 @@ function TaskList({ data }) {
             );
           }
           if (task.newTask) {
-            return <NewTask key={id + Math.random()} data={task} />;
+            return (
+              <NewTask key={id + Math.random()} dataUser={data} data={task} />
+            );
           }
           if (task.completed) {
-            return <CompleteTask key={id + Math.random()} data={task} />;
+            return <CompleteTask key={id + Math.random()} dataUser={data} data={task} />;
           }
           if (task.failed) {
             return <FailedTask key={id + Math.random()} data={task} />;

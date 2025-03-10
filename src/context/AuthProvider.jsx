@@ -12,8 +12,8 @@ function AuthProvider({ children }) {
       if (userData) {
         localStorage.setItem("employees", JSON.stringify(userData));
       } else {
-        let data = JSON.parse(employees);
-        setUserData(data);
+        let { employees } = getLocalStorage();
+        setUserData(employees);
       }
     } else {
       setLocalStorage();

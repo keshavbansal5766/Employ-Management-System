@@ -1,31 +1,51 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-
 function AcceptTask({ data, dataUser }) {
   const [userData, setUserData] = useContext(AuthContext);
 
   const handleComplete = () => {
-    // setUserData((prev) => {
-    //   return prev.map((user) => {
-    //     return user.firstName === dataUser.firstName
-    //       ? {
-    //           ...user,
-    //           tasks: user.tasks.map((task) =>
-    //             task.taskTitle === data.taskTitle
-    //               ? { ...task, completed: true, active: false }
-    //               : task
-    //           ),
-    //           taskCounts: {
-    //             ...user.taskCounts,
-    //             completed: (user.taskCounts.completed =
-    //               user.taskCounts.completed + 1),
-    //             active: (user.taskCounts.active = user.taskCounts.active - 1),
-    //           },
-    //         }
-    //       : user;
-    //   });
-    // });
-    // console.log(userData);
+    setUserData((prev) => {
+      return prev.map((user) => {
+        return user.firstName === dataUser.firstName
+          ? {
+              ...user,
+              tasks: user.tasks.map((task) =>
+                task.taskTitle === data.taskTitle
+                  ? { ...task, active: false, completed: true }
+                  : task
+              ),
+              taskCounts: {
+                ...user.taskCounts,
+                completed: user.taskCounts.completed + 1,
+                active: user.taskCounts.active - 1,
+                newTask: user.taskCounts.newTask - 1,
+              },
+            }
+          : user;
+      });
+    });
+  };
+
+  const handleFailed = () => {
+    setUserData((prev) => {
+      return prev.map((user) => {
+        return user.firstName === dataUser.firstName
+          ? {
+              ...user,
+              tasks: user.tasks.map((task) =>
+                task.taskTitle === data.taskTitle
+                  ? { ...task, active: false, failed: true }
+                  : task
+              ),
+              taskCounts: {
+                ...user.taskCounts,
+                failed: user.taskCounts.failed + 1,
+                active: user.taskCounts.active - 1,
+              },
+            }
+          : user;
+      });
+    });
   };
 
   return (
@@ -44,7 +64,7 @@ function AcceptTask({ data, dataUser }) {
           Mark as Completed
         </button>
         <button
-          // onClick={handleFailed}
+          onClick={handleFailed}
           className="bg-red-500 rounded font-medium py-1 px-2 text-xs"
         >
           Mark as Failed

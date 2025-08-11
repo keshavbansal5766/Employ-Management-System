@@ -4,9 +4,7 @@ import { AuthContext } from "../../context/AuthProvider";
 function NewTask({ data, dataUser }) {
   // console.log(dataUser);
   const [userData, setUserData] = useContext(AuthContext);
-  const [newTaskAccept, setNewTaskAccept] = useState(false);
   const handleNewTask = () => {
-    setNewTaskAccept(true);
     setUserData((prev) => {
       return prev.map((user) => {
         return user.firstName === dataUser.firstName

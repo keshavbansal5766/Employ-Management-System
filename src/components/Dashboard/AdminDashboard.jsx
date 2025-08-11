@@ -8,7 +8,6 @@ function AdminDashboard({ changeUser }) {
     <div className="h-screen p-10 w-full">
       <Header changeUser={changeUser} />
       <AssignTask />
-      <CreateAdmin />
     </div>
   );
 }
